@@ -17,7 +17,7 @@ import seaborn as sns
 
 
 
-df = pd.read_csv(![](diabetes.csv))
+df = pd.read_csv(r'C:\Users\91748\Desktop\ai project 3\diabetes_prediction\diabetes.csv')
 
 # HEADINGS
 st.title('Diabetes Checkup')
@@ -43,17 +43,17 @@ def user_report():
   dpf = st.sidebar.slider('Diabetes Pedigree Function', 0.0,2.4, 0.47 )
   age = st.sidebar.slider('Age', 21,88, 33 )
 
-  user_report_data = {
-      'pregnancies':pregnancies,
-      'glucose':glucose,
-      'bp':bp,
-      'skinthickness':skinthickness,
-      'insulin':insulin,
-      'bmi':bmi,
-      'dpf':dpf,
-      'age':age
+  user_report = {
+      'Pregnancies':pregnancies,
+      'Glucose':glucose,
+      'BloodPressure':bp,
+      'SkinThickness':skinthickness,
+      'Insulin':insulin,
+      'BMI':bmi,
+      'DiabetesPedigreeFunction':dpf,
+      'Age':age
   }
-  report_data = pd.DataFrame(user_report_data, index=[0])
+  report_data = pd.DataFrame(user_report, index=[0])
   return report_data
 
 
@@ -90,7 +90,7 @@ else:
 st.header('Pregnancy count Graph (Others vs Yours)')
 fig_preg = plt.figure()
 ax1 = sns.scatterplot(x = 'Age', y = 'Pregnancies', data = df, hue = 'Outcome', palette = 'Greens')
-ax2 = sns.scatterplot(x = user_data['age'], y = user_data['pregnancies'], s = 150, color = color)
+ax2 = sns.scatterplot(x = user_data['Age'], y = user_data['Pregnancies'], s = 150, color = color)
 plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,20,2))
 plt.title('0 - Healthy & 1 - Unhealthy')
@@ -102,7 +102,7 @@ st.pyplot(fig_preg)
 st.header('Glucose Value Graph (Others vs Yours)')
 fig_glucose = plt.figure()
 ax3 = sns.scatterplot(x = 'Age', y = 'Glucose', data = df, hue = 'Outcome' , palette='magma')
-ax4 = sns.scatterplot(x = user_data['age'], y = user_data['glucose'], s = 150, color = color)
+ax4 = sns.scatterplot(x = user_data['Age'], y = user_data['Glucose'], s = 150, color = color)
 plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,220,10))
 plt.title('0 - Healthy & 1 - Unhealthy')
@@ -114,7 +114,7 @@ st.pyplot(fig_glucose)
 st.header('Blood Pressure Value Graph (Others vs Yours)')
 fig_bp = plt.figure()
 ax5 = sns.scatterplot(x = 'Age', y = 'BloodPressure', data = df, hue = 'Outcome', palette='Reds')
-ax6 = sns.scatterplot(x = user_data['age'], y = user_data['bp'], s = 150, color = color)
+ax6 = sns.scatterplot(x = user_data['Age'], y = user_data['BloodPressure'], s = 150, color = color)
 plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,130,10))
 plt.title('0 - Healthy & 1 - Unhealthy')
@@ -125,7 +125,7 @@ st.pyplot(fig_bp)
 st.header('Skin Thickness Value Graph (Others vs Yours)')
 fig_st = plt.figure()
 ax7 = sns.scatterplot(x = 'Age', y = 'SkinThickness', data = df, hue = 'Outcome', palette='Blues')
-ax8 = sns.scatterplot(x = user_data['age'], y = user_data['skinthickness'], s = 150, color = color)
+ax8 = sns.scatterplot(x = user_data['Age'], y = user_data['SkinThickness'], s = 150, color = color)
 plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,110,10))
 plt.title('0 - Healthy & 1 - Unhealthy')
@@ -136,7 +136,7 @@ st.pyplot(fig_st)
 st.header('Insulin Value Graph (Others vs Yours)')
 fig_i = plt.figure()
 ax9 = sns.scatterplot(x = 'Age', y = 'Insulin', data = df, hue = 'Outcome', palette='rocket')
-ax10 = sns.scatterplot(x = user_data['age'], y = user_data['insulin'], s = 150, color = color)
+ax10 = sns.scatterplot(x = user_data['Age'], y = user_data['Insulin'], s = 150, color = color)
 plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,900,50))
 plt.title('0 - Healthy & 1 - Unhealthy')
@@ -147,7 +147,7 @@ st.pyplot(fig_i)
 st.header('BMI Value Graph (Others vs Yours)')
 fig_bmi = plt.figure()
 ax11 = sns.scatterplot(x = 'Age', y = 'BMI', data = df, hue = 'Outcome', palette='rainbow')
-ax12 = sns.scatterplot(x = user_data['age'], y = user_data['bmi'], s = 150, color = color)
+ax12 = sns.scatterplot(x = user_data['Age'], y = user_data['BMI'], s = 150, color = color)
 plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,70,5))
 plt.title('0 - Healthy & 1 - Unhealthy')
@@ -158,7 +158,7 @@ st.pyplot(fig_bmi)
 st.header('DPF Value Graph (Others vs Yours)')
 fig_dpf = plt.figure()
 ax13 = sns.scatterplot(x = 'Age', y = 'DiabetesPedigreeFunction', data = df, hue = 'Outcome', palette='YlOrBr')
-ax14 = sns.scatterplot(x = user_data['age'], y = user_data['dpf'], s = 150, color = color)
+ax14 = sns.scatterplot(x = user_data['Age'], y = user_data['DiabetesPedigreeFunction'], s = 150, color = color)
 plt.xticks(np.arange(10,100,5))
 plt.yticks(np.arange(0,3,0.2))
 plt.title('0 - Healthy & 1 - Unhealthy')
